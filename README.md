@@ -5,13 +5,16 @@ Boston, MA • (267) 565-8065 • jacobgottesman1@gmail.com • [LinkedIn](www.l
 
 ## Sample Projects
 
-**Ultimate Frisbee Analytics Player Rating System | Research**  
+**Ultimate Frisbee Analytics Player Rating System**  
 - Gathered AUDL data using APIs and web scraping.  
 - Used machine learning to classify players by position.  
 - Leveraged player stats and game data in mixed effects and other statistical methods for novel player rating systems.  
 - Presented project poster at RISE and UCSAS, and authored research paper for CMSAC. 
 
-
+[Player Ratings](https://ultimateanalyticsapp.streamlit.app/) (Updated through 2024 season)
+[Project Github Repo](https://github.com/jacobgottesman/UltimateAnalyticsApp/tree/main)
+[Project Poster](https://pbs.twimg.com/media/GK0wqkgaIAQmY-4?format=jpg&name=4096x4096)
+[Project Paper](https://github.com/jacobgottesman/UltimateAnalyticsApp/blob/main/CMSAC%20Paper.pdf)
 
 ## Experience  
 
