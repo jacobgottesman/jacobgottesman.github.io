@@ -1,7 +1,17 @@
-# Jacob Gottesman  
 Boston, MA • (267) 565-8065 • jacobgottesman1@gmail.com • [LinkedIn](www.linkedin.com/in/jacob-gottesman-neu)
 
 ---
+
+
+## Sample Projects
+
+**Ultimate Frisbee Analytics Player Rating System | Research**  
+- Gathered AUDL data using APIs and web scraping.  
+- Used machine learning to classify players by position.  
+- Leveraged player stats and game data in mixed effects and other statistical methods for novel player rating systems.  
+- Presented project poster at RISE and UCSAS, and authored research paper for CMSAC. 
+
+
 
 ## Experience  
 
@@ -12,13 +22,7 @@ Boston, MA • (267) 565-8065 • jacobgottesman1@gmail.com • [LinkedIn](www.l
 - Led project developing a framework for a cross-team process for further model development w/ agile methodology.  
 - Won hackathon using Python, OpenAI API to turn raw customer support text into concise product feedback.  
 - Implemented model with XGboost and metalearners to predict 30 day form submissions with median error of 12 submissions.
-
-**Ultimate Frisbee Analytics Player Rating System | Research**  
-*Boston, MA | July 2023 - August 2024*  
-- Gathered AUDL data using APIs and web scraping.  
-- Used machine learning to classify players by position.  
-- Leveraged player stats and game data in mixed effects and other statistical methods for novel player rating systems.  
-- Presented project poster and authored research paper for three conferences: UCSAS, RISE, and CMSAC.  
+ 
 
 **Data Scientist Co-op | Tram Global**  
 *Boston, MA | September 2023 - December 2023*  
