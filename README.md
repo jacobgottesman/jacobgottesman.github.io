@@ -21,8 +21,8 @@ Boston, MA • (267) 565-8065 • jacobgottesman1@gmail.com • [LinkedIn](www.l
 
 **Q-learning Based Movie Recommendations**
 - Used MovieLens 25M dataset to create a Q-learning based movie recommendation framework [dataset](https://grouplens.org/datasets/movielens/25m/)
-- Streamlit app that uses trained model to generate recommendations based on inputted movies that user likes
-- Final project for academic course in Spring 2023
+- Streamlit app that uses the trained model to generate recommendations based on inputted movies that user likes
+- Final project for an academic course in April 2024
 
 [Interactive Streamlit App](https://movierecommendationsrl.streamlit.app/)
 
@@ -30,6 +30,14 @@ Boston, MA • (267) 565-8065 • jacobgottesman1@gmail.com • [LinkedIn](www.l
 
 [Project Report](https://docs.google.com/document/d/1mfZTl1EIpUslSyvpGnj3fCdHzcoJc_179AovS-XALIc/edit?tab=t.0)
 
+**Classifying Presidential Speech Snippets by President, NLP Methods**
+- Trained three different models to classify individual sentences from presidential speeches by president
+- Compared three classification techniques: feed forward neural net, long short-term memory model, and a transformer based model
+- Final project for academic project in June 2024
+
+[Github Repo](https://github.com/jacobgottesman/president_speech_classifier)
+
+[Project Report](https://docs.google.com/document/d/1f5hibn2DuLJ_5ICpLmBLJ65hD3eLun5e_-RsG3sUz5c/edit?usp=sharing)
 
 ## Experience  
 
