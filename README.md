@@ -85,8 +85,3 @@ Candidate for Bachelor of Science in Data Science
 - **Relevant Coursework**: Advanced Programming with Data, Machine Learning and Data Mining 1 & 2, Calculus 3, Artificial Intelligence, Probability and Statistics, Differential Equations and Linear Algebra, Programming in C++, Algorithms, Natural Language Processing, Data Visualization, HCI, Practical Neural Networks, LLM-Integrated Systems  
 - **Activities**: Delta Kappa Epsilon Fraternity, Sports Analytics Club (Treasurer), Hillel, DATA Club  
 
----
-
-## Technical Skills  
-
-**Programming Languages**: Python | SQL | C++ | MATLAB | Java | HTML |
