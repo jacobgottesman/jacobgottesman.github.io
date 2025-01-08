@@ -79,9 +79,10 @@ Boston, MA • (267) 565-8065 • jacobgottesman1@gmail.com • [LinkedIn](www.l
 ## Education  
 
 **Northeastern University**  
-*Boston, MA | September 2021 - May 2025*  
+*Boston, MA  September 2021 - May 2025*  
 Candidate for Bachelor of Science in Data Science  
-- **GPA**: 3.92/4.0 | Dean’s List in Every Completed Semester  
+- **GPA**: 3.92/4.0
+- Dean’s List in Every Completed Semester  
 - **Relevant Coursework**: Advanced Programming with Data, Machine Learning and Data Mining 1 & 2, Calculus 3, Artificial Intelligence, Probability and Statistics, Differential Equations and Linear Algebra, Programming in C++, Algorithms, Natural Language Processing, Data Visualization, HCI, Practical Neural Networks, LLM-Integrated Systems  
 - **Activities**: Delta Kappa Epsilon Fraternity, Sports Analytics Club (Treasurer), Hillel, DATA Club  
 
