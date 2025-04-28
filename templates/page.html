@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.meta.title }} | {{ config.SITE_TITLE }}{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-title">{{ page.meta.title }}</h1>
+    </div>
+</section>
+
+<section class="page-content">
+    <div class="container">
+        <div class="content-wrapper">
+            {% if html_content %}
+                {{ html_content }}
+            {% else %}
+                {{ page }}
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

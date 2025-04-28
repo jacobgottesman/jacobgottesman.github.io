@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.meta.title }} | {{ config.SITE_TITLE }}{% endblock %}
+
+{% block content %}
+<section class="project-header">
+    <div class="container">
+        <h1 class="project-header-title">{{ project.meta.title }}</h1>
+        <div class="project-header-meta">
+            <div class="project-tags">
+                {% for tag in project.meta.tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            <div class="project-links">
+                {% if project.meta.demo_url %}
+                <a href="{{ project.meta.demo_url }}" target="_blank" class="btn btn-sm btn-primary">
+                    <i class="fas fa-external-link-alt"></i> View Demo
+                </a>
+                {% endif %}
+                {% if project.meta.github_url %}
+                <a href="{{ project.meta.github_url }}" target="_blank" class="btn btn-sm btn-secondary">
+                    <i class="fab fa-github"></i> GitHub Repo
+                </a>
+                {% endif %}
+                {% if project.meta.paper_url %}
+                <a href="{{ project.meta.paper_url }}" target="_blank" class="btn btn-sm btn-outline">
+                    <i class="fas fa-file-alt"></i> Paper
+                </a>
+                {% endif %}
+                {% if project.meta.video_url %}
+                <a href="{{ project.meta.video_url }}" target="_blank" class="btn btn-sm btn-outline">
+                    <i class="fas fa-video"></i> Video
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="project-content">
+    <div class="container">
+        <div class="project-content-wrapper">
+            {% if project.meta.image %}
+            <div class="project-featured-image">
+                <img src="{{ url_for('static', filename='img/' + project.meta.image) }}" alt="{{ project.meta.title }}">
+            </div>
+            {% endif %}
+            
+            <div class="project-description">
+                {{ project }}
+            </div>
+            
+            {% if project.meta.technologies %}
+            <div class="project-technologies">
+                <h3>Technologies Used</h3>
+                <ul class="technologies-list">
+                    {% for tech in project.meta.technologies %}
+                    <li>{{ tech }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="project-navigation">
+    <div class="container">
+        <a href="/" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Projects
+        </a>
+    </div>
+</section>
+{% endblock %}

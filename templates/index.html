@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Jacob Gottesman</h1>
+            <h2 class="hero-subtitle">Data Scientist & Machine Learning Engineer</h2>
+            <p class="hero-text">Developing data-driven solutions with machine learning, NLP, and statistical modeling</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="/about/" class="btn btn-secondary">About Me</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="projects">
+    <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            {% for project in projects %}
+            <article class="project-card">
+                {% if project.meta.image %}
+                <div class="project-image">
+                    <img src="{{ url_for('static', filename='img/' + project.meta.image) }}" alt="{{ project.meta.title }}">
+                </div>
+                {% endif %}
+                <div class="project-content">
+                    <h3 class="project-title">{{ project.meta.title }}</h3>
+                    <p class="project-description">{{ project.meta.description }}</p>
+                    <div class="project-tags">
+                        {% for tag in project.meta.tags %}
+                        <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="project-links">
+                        {% if project.meta.demo_url %}
+                        <a href="{{ project.meta.demo_url }}" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                        {% endif %}
+                        {% if project.meta.github_url %}
+                        <a href="{{ project.meta.github_url }}" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        {% endif %}
+                        {% if project.meta.paper_url %}
+                        <a href="{{ project.meta.paper_url }}" target="_blank" class="project-link">
+                            <i class="fas fa-file-alt"></i> Paper
+                        </a>
+                        {% endif %}
+                        {% if project.meta.video_url %}
+                        <a href="{{ project.meta.video_url }}" target="_blank" class="project-link">
+                            <i class="fas fa-video"></i> Video
+                        </a>
+                        {% endif %}
+                        <a href="{{ url_for('project', path=project.path.replace('projects/', '')) }}" class="project-link">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">Interested in working together?</h2>
+            <p class="cta-text">I'm currently open to new opportunities and collaborations.</p>
+            <a href="mailto:{{ config.EMAIL }}" class="btn btn-primary">Contact Me</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
