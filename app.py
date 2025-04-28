@@ -65,6 +65,8 @@ def project(path):
     project = pages.get_or_404(f'projects/{path}')
     return render_template('project.html', project=project)
 
+#test
+
 @app.route('/<path:path>/')
 def page(path):
     """Generic page route for about, resume, etc."""
