@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reinforcement Learning Movie Recommendation System | Jacob Gottesman | Data Scientist</title>
+    <meta name="description" content="Portfolio of Jacob Gottesman, Data Scientist specializing in machine learning, NLP, and statistical modeling.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../static/css/main.css">
+    
+    
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">JG</a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="/" class="nav-link">Projects</a></li>
+                        <li><a href="/about/" class="nav-link">About</a></li>
+                        <li><a href="/resume/" class="nav-link">Resume</a></li>
+                        <li><a href="https://github.com/jacobgottesman" target="_blank" class="nav-link"><i class="fab fa-github"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/jacob-gottesman-neu" target="_blank" class="nav-link"><i class="fab fa-linkedin"></i></a></li>
+                    </ul>
+                    <button class="menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+<section class="project-header">
+    <div class="container">
+        <h1 class="project-header-title">Reinforcement Learning Movie Recommendation System</h1>
+        <div class="project-header-meta">
+            <div class="project-tags">
+                
+                <span class="tag">Reinforcement Learning</span>
+                
+                <span class="tag">Q-Learning</span>
+                
+                <span class="tag">Recommender Systems</span>
+                
+                <span class="tag">Machine Learning</span>
+                
+                <span class="tag">Python</span>
+                
+            </div>
+            <div class="project-links">
+                
+                <a href="https://github.com/petersnicole/movie-recommender-display" target="_blank" class="btn btn-sm btn-primary">
+                    <i class="fas fa-external-link-alt"></i> View Demo
+                </a>
+                
+                
+                <a href="https://github.com/jacobgottesman/rl_movie_recs" target="_blank" class="btn btn-sm btn-secondary">
+                    <i class="fab fa-github"></i> GitHub Repo
+                </a>
+                
+                
+                <a href="https://drive.google.com/file/d/10KHWTTIaa0acQeNQLL-DhOSGV8BjmWhY/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline">
+                    <i class="fas fa-file-alt"></i> Paper
+                </a>
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="project-content">
+    <div class="container">
+        <div class="project-content-wrapper">
+            
+            <div class="project-featured-image">
+                <img src="../../static/img/movie-recs.jpg" alt="Reinforcement Learning Movie Recommendation System">
+            </div>
+            
+            
+            <div class="project-description">
+                <h2>Project Overview</h2>
+<p>This project implements an innovative movie recommendation system using reinforcement learning techniques. Unlike traditional collaborative filtering methods, our approach employs Q-learning to create a one-to-one mapping from movies to highly relevant recommendations. The system learns from user behavior and movie similarity to suggest films that fans of a particular movie would enjoy.</p>
+<h2>The Challenge</h2>
+<p>While recommendation systems typically rely on collaborative filtering, we wanted to explore whether reinforcement learning could provide an effective alternative. This approach is interesting because it learns from experience which movies to recommend, somewhat like how humans watch movies and develop an understanding of which ones would appeal to similar audiences.</p>
+<h2>Data Source</h2>
+<p>We utilized the MovieLens 25M dataset, which contains:
+- 25 million starred movie reviews across 62,000+ movies by 162,000+ users
+- Over 1,000 genome tags for each movie with relevance scores (0-1)
+- User-generated tags and ratings</p>
+<h2>Methodology</h2>
+<h3>Q-Learning Framework</h3>
+<p>Our core innovation is applying Q-learning to the recommendation problem:
+- <strong>States</strong>: Individual movies in our Q-table
+- <strong>Actions</strong>: Transitioning to another movie reviewed by the same user
+- <strong>Rewards</strong>: Based on the user's rating of the recommended movie and calculated similarity scores
+- <strong>Q-function</strong>: Learns the optimal policy for recommending movies</p>
+<h3>Movie Similarity Scoring</h3>
+<p>A key improvement in our model was the introduction of movie similarity scores:
+- Calculated using genome tag relevance for each movie pair
+- Allowed recommendations to consider content similarity, not just ratings
+- Helped prevent popular but contextually irrelevant recommendations</p>
+<h3>Training Process</h3>
+<p>Our final model was trained through:
+1. 5,000 episodes with an epsilon-greedy approach (initial ε = 0.9)
+2. Gradual reduction of exploration via decay rate (final ε ≈ 0.5)
+3. Limited dataset to movies with over 2,000 reviews (2,428 movies total)
+4. Similarity-weighted reward functions</p>
+<h2>Results</h2>
+<p>Our reinforcement learning approach demonstrated several advantages:
+- Generated 1,159 unique movie recommendations across our dataset
+- Reduced bias toward universally popular movies (no movie recommended more than 17 times)
+- Produced contextually relevant recommendations that passed the "eye test"
+- Showed consistent improvement in average reward per timestep throughout training</p>
+<h2>Interactive Demo</h2>
+<p>We developed a React application that allows users to:
+- Input a favorite movie
+- Receive a personalized recommendation based on our Q-learning model
+- Experiment with an extended feature for multi-movie input recommendations</p>
+<h2>Future Development</h2>
+<p>Potential enhancements include:
+- Implementing Apache Spark for improved scalability
+- Leveraging the Northeastern Discovery network for computational resources
+- Further refining similarity metrics to enhance recommendation relevance
+- Expanding our approach to larger datasets</p>
+            </div>
+            
+            
+            <div class="project-technologies">
+                <h3>Technologies Used</h3>
+                <ul class="technologies-list">
+                    
+                    <li>Python</li>
+                    
+                    <li>Pandas</li>
+                    
+                    <li>NumPy</li>
+                    
+                    <li>React</li>
+                    
+                    <li>MovieLens Dataset</li>
+                    
+                    <li>Q-Learning</li>
+                    
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section class="project-navigation">
+    <div class="container">
+        <a href="/" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Projects
+        </a>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2025 Jacob Gottesman. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="mailto:jacobgottesman1@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/jacobgottesman" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/jacob-gottesman-neu" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../static/js/main.js"></script>
+    
+</body>
+</html>

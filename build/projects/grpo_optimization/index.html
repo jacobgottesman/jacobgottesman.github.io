@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improving LLMs as Optimizers Using GRPO | Jacob Gottesman | Data Scientist</title>
+    <meta name="description" content="Portfolio of Jacob Gottesman, Data Scientist specializing in machine learning, NLP, and statistical modeling.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../static/css/main.css">
+    
+    
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">JG</a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="/" class="nav-link">Projects</a></li>
+                        <li><a href="/about/" class="nav-link">About</a></li>
+                        <li><a href="/resume/" class="nav-link">Resume</a></li>
+                        <li><a href="https://github.com/jacobgottesman" target="_blank" class="nav-link"><i class="fab fa-github"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/jacob-gottesman-neu" target="_blank" class="nav-link"><i class="fab fa-linkedin"></i></a></li>
+                    </ul>
+                    <button class="menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+<section class="project-header">
+    <div class="container">
+        <h1 class="project-header-title">Improving LLMs as Optimizers Using GRPO</h1>
+        <div class="project-header-meta">
+            <div class="project-tags">
+                
+                <span class="tag">Reinforcement Learning</span>
+                
+                <span class="tag">GRPO</span>
+                
+                <span class="tag">Large Language Models</span>
+                
+                <span class="tag">Optimization</span>
+                
+                <span class="tag">Traveling Salesperson Problem</span>
+                
+            </div>
+            <div class="project-links">
+                
+                
+                <a href="https://github.com/fahyjo/llm-final-project" target="_blank" class="btn btn-sm btn-secondary">
+                    <i class="fab fa-github"></i> GitHub Repo
+                </a>
+                
+                
+                <a href="https://drive.google.com/file/d/1xCPaNX3bneK4-bHEgLM0q7i5QrpgTDxH/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline">
+                    <i class="fas fa-file-alt"></i> Paper
+                </a>
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="project-content">
+    <div class="container">
+        <div class="project-content-wrapper">
+            
+            <div class="project-featured-image">
+                <img src="../../static/img/tsp-optimization.jpg" alt="Improving LLMs as Optimizers Using GRPO">
+            </div>
+            
+            
+            <div class="project-description">
+                <h2>Project Overview</h2>
+<p>This project explores an innovative approach to enhancing language models' ability to solve optimization problems, specifically the Traveling Salesperson Problem (TSP), using Guided Reinforcement through Policy Optimization (GRPO). By fine-tuning a Qwen2.5-3B-Instruct model, we demonstrate that LLMs can be improved as optimization solvers through targeted reinforcement learning techniques.</p>
+<h2>The Challenge of Optimization</h2>
+<p>While large language models have shown remarkable capabilities across various domains, their application to constrained optimization problems remains challenging:
+- Optimization traditionally relies on specialized algorithmic solvers
+- LLMs lack the systematic search capabilities of traditional optimizers
+- Standard fine-tuning approaches may not effectively improve optimization performance</p>
+<p>GRPO offers a promising approach by allowing efficient reinforcement learning on problems with verifiably correct answers, potentially democratizing LLM fine-tuning for specialized applications.</p>
+<h2>Data Generation</h2>
+<p>We developed a custom pipeline to generate standardized TSP datasets:
+- Random points with integer x,y coordinates in the range [-100, 100]
+- Unique identifiers for each point/city
+- Calculated optimal solutions using brute force (for problems ≤10 cities) or simulated annealing (for larger problems)
+- Structured prompts containing node coordinates, distance matrices, and example solutions</p>
+<h2>Methodology</h2>
+<h3>GRPO Implementation</h3>
+<p>We leveraged several advanced techniques to make GRPO training efficient:
+- TRL library's GRPO implementation as the core framework
+- Unsloth, vLLM, 4-bit quantization, and LoRA for improved speed and reduced memory requirements
+- A100 GPUs from the Delta cluster for compute resources
+- Qwen2.5-3B-Instruct as our base model after testing various architectures</p>
+<h3>Custom Reward Functions</h3>
+<p>We designed five specialized reward functions to guide the model:
+1. <strong>Scaled Accuracy Reward</strong> (weight: 5.0): Variable reward based on proximity to optimal solution
+2. <strong>Improvement Reward</strong> (weight: 2.5): Reward for outperforming example solutions
+3. <strong>Valid Response Reward</strong>: Reward for routes that satisfy problem constraints
+4. <strong>Soft Format Reward</strong>: Reward for including proper reasoning and trace tags
+5. <strong>Strict Format Reward</strong>: Reward for adhering to stricter formatting requirements</p>
+<h2>Results</h2>
+<p>Our GRPO-enhanced model (Qwen2.5-TSP) demonstrated significant improvements:</p>
+<table>
+<thead>
+<tr>
+<th>Problem Size</th>
+<th style="text-align: right;">Baseline Accuracy</th>
+<th style="text-align: right;">GRPO-Enhanced Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td style="text-align: right;">0.46</td>
+<td style="text-align: right;">0.79</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">0.50</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">0.21</td>
+</tr>
+<tr>
+<td>8</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.13</td>
+</tr>
+<tr>
+<td>9</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.08</td>
+</tr>
+</tbody>
+</table>
+<h3>Key Findings</h3>
+<ul>
+<li><strong>Significant Improvement for Small Problems</strong>: Qwen2.5-TSP showed a 71% improvement in solving 5-city problems</li>
+<li><strong>Moderate Generalization</strong>: Despite training only on 5-city problems, improvements generalized to problems with 6-7 cities</li>
+<li><strong>Format Compliance</strong>: Format-related rewards were quickly optimized (~100 training steps)</li>
+<li><strong>Better Reasoning Traces</strong>: Qwen2.5-TSP demonstrated more methodical problem-solving approaches compared to the baseline model</li>
+</ul>
+<h2>Limitations and Future Work</h2>
+<p>While our approach showed promise, several limitations emerged:
+- Diminishing returns for larger problems (10+ cities)
+- Iterative approaches were challenging to integrate with existing GRPO frameworks
+- Limited success with binary reward functions (only rewarding optimal solutions)</p>
+<p>Future directions could include:
+- Exploring iterative solving approaches with GRPO
+- Testing larger, more capable base models
+- Developing more sophisticated reward mechanisms for complex optimization problems</p>
+<h2>Conclusion</h2>
+<p>Our project demonstrates that targeted reinforcement learning can enhance LLMs' ability to solve optimization problems. While the improvements are most significant for smaller problems, the generalization to moderately larger problems suggests LLMs can learn transferable optimization strategies.</p>
+<p>The project contributes to the emerging field of LLMs as optimization tools, though practical limitations suggest these approaches may complement rather than replace traditional optimization algorithms.</p>
+<h2>Team</h2>
+<p>This project was conducted by Jacob Gottesman and John Fahy as part of advanced coursework in spring 2024.</p>
+            </div>
+            
+            
+            <div class="project-technologies">
+                <h3>Technologies Used</h3>
+                <ul class="technologies-list">
+                    
+                    <li>Python</li>
+                    
+                    <li>GRPO</li>
+                    
+                    <li>Qwen2.5</li>
+                    
+                    <li>TRL</li>
+                    
+                    <li>Unsloth</li>
+                    
+                    <li>vLLM</li>
+                    
+                    <li>LoRA</li>
+                    
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section class="project-navigation">
+    <div class="container">
+        <a href="/" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Projects
+        </a>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2025 Jacob Gottesman. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="mailto:jacobgottesman1@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/jacobgottesman" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/jacob-gottesman-neu" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../static/js/main.js"></script>
+    
+</body>
+</html>

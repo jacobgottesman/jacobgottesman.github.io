@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classifying Presidential Speech Snippets by President | Jacob Gottesman | Data Scientist</title>
+    <meta name="description" content="Portfolio of Jacob Gottesman, Data Scientist specializing in machine learning, NLP, and statistical modeling.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../static/css/main.css">
+    
+    
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">JG</a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="/" class="nav-link">Projects</a></li>
+                        <li><a href="/about/" class="nav-link">About</a></li>
+                        <li><a href="/resume/" class="nav-link">Resume</a></li>
+                        <li><a href="https://github.com/jacobgottesman" target="_blank" class="nav-link"><i class="fab fa-github"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/jacob-gottesman-neu" target="_blank" class="nav-link"><i class="fab fa-linkedin"></i></a></li>
+                    </ul>
+                    <button class="menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+<section class="project-header">
+    <div class="container">
+        <h1 class="project-header-title">Classifying Presidential Speech Snippets by President</h1>
+        <div class="project-header-meta">
+            <div class="project-tags">
+                
+                <span class="tag">Natural Language Processing</span>
+                
+                <span class="tag">Neural Networks</span>
+                
+                <span class="tag">Text Classification</span>
+                
+                <span class="tag">Python</span>
+                
+                <span class="tag">TensorFlow</span>
+                
+                <span class="tag">LSTM</span>
+                
+                <span class="tag">Transformers</span>
+                
+            </div>
+            <div class="project-links">
+                
+                
+                <a href="https://github.com/jacobgottesman/president_speech_classifier" target="_blank" class="btn btn-sm btn-secondary">
+                    <i class="fab fa-github"></i> GitHub Repo
+                </a>
+                
+                
+                <a href="https://drive.google.com/file/d/1ZGHxfKTCquKv1m3ckqAnyYl4X8y8zWQS/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline">
+                    <i class="fas fa-file-alt"></i> Paper
+                </a>
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="project-content">
+    <div class="container">
+        <div class="project-content-wrapper">
+            
+            <div class="project-featured-image">
+                <img src="../../static/img/president-speech.jpg" alt="Classifying Presidential Speech Snippets by President">
+            </div>
+            
+            
+            <div class="project-description">
+                <h2>Project Overview</h2>
+<p>This project applies advanced natural language processing techniques to identify which U.S. president delivered a speech based on short text samples (16-word snippets). By implementing and comparing three different neural network architectures, our research demonstrates how machine learning can detect subtle linguistic patterns unique to each president's speaking style.</p>
+<h2>The Challenge</h2>
+<p>Presidential speeches contain distinctive linguistic fingerprints influenced by:
+- Personal speaking style, vocabulary choices, and rhetorical patterns
+- Historical context and political environment of their era
+- The evolution of political discourse across American history
+- Subtle patterns that may transcend party lines or time periods</p>
+<p>Our challenge was to determine if these patterns are distinctive enough for accurate classification across 43 presidents spanning over two centuries of American history, and to identify which neural network architecture best captures these subtle differences.</p>
+<h2>Data Collection and Preparation</h2>
+<p>Our dataset consists of:
+- Over 1,000 presidential speeches from the Miller Center at the University of Virginia
+- More than 4.6 million tokens across 182,084 sentences
+- 16-word sequence extraction to create training examples
+- Word2Vec embeddings to capture semantic relationships
+- Minimal preprocessing (case folding and tokenization) to preserve authentic speech patterns
+- A minimum threshold of 10,000 tokens per president to ensure sufficient training data</p>
+<h2>Neural Network Architectures</h2>
+<h3>Feed-Forward Neural Network</h3>
+<ul>
+<li>Input layer accepting 800-dimension vectors (16 words × 50-dimension embeddings)</li>
+<li>Single hidden layer with 1,000 units</li>
+<li>Classification layer with 43 outputs corresponding to different presidents</li>
+<li>Achieved 18.9% accuracy on the test set</li>
+</ul>
+<h3>Long Short-Term Memory Network (LSTM)</h3>
+<ul>
+<li>Specialized architecture designed for sequential data</li>
+<li>400 hidden units capturing temporal dependencies in speech patterns</li>
+<li>Direct processing of the 2D input of shape (16, 50)</li>
+<li>Our best-performing model with 52.8% accuracy on the test set</li>
+</ul>
+<h3>Transformer Model</h3>
+<ul>
+<li>Encoder architecture with 8 self-attention heads</li>
+<li>1,000 hidden units with pooling layer</li>
+<li>Sophisticated contextual understanding through attention mechanisms</li>
+<li>Achieved 40.1% accuracy on the test set</li>
+</ul>
+<h2>Results and Analysis</h2>
+<p>Our models demonstrated impressive performance considering the complexity of classifying among 43 different presidents:</p>
+<ul>
+<li><strong>LSTM Network</strong>: Achieved the highest accuracy at 52.8%, with strong precision (52.4%) and recall (52.8%)</li>
+<li><strong>Transformer Model</strong>: Reached 40.1% accuracy with balanced precision and recall</li>
+<li><strong>Feed-Forward Network</strong>: Baseline performance of 18.9% accuracy</li>
+</ul>
+<p>Analysis of classification patterns revealed fascinating insights:
+- Donald Trump showed the most distinctive speaking style, with highest precision and recall across models
+- Presidents from similar historical eras were often confused with each other
+- Some presidents with limited training data (like Millard Fillmore and Zachary Taylor) were harder to classify
+- Political party affiliation appeared less important than historical era in determining speaking style</p>
+<h2>Interactive Examples and Applications</h2>
+<p>Our project demonstrates potential applications in:
+- Historical research and political science analysis
+- Authorship attribution and linguistic fingerprinting
+- Understanding the evolution of political discourse over time
+- Exploring similarities and differences across political eras</p>
+<h2>Future Work</h2>
+<p>Potential extensions of this research include:
+- Implementing pre-trained language models like BERT to enhance performance
+- Expanding the architecture with additional layers and tuning hyperparameters
+- Analyzing the relationship between party affiliation and classification accuracy
+- Investigating what specific linguistic features drive confusion between presidents
+- Exploring broader questions about how political discourse has evolved across American history</p>
+<p>This project represents a successful application of cutting-edge NLP techniques to a challenging multi-class classification problem, revealing insights into the linguistic patterns that define presidential communication over two centuries.</p>
+            </div>
+            
+            
+            <div class="project-technologies">
+                <h3>Technologies Used</h3>
+                <ul class="technologies-list">
+                    
+                    <li>Python</li>
+                    
+                    <li>TensorFlow</li>
+                    
+                    <li>NLTK</li>
+                    
+                    <li>Word2Vec</li>
+                    
+                    <li>Neural Networks</li>
+                    
+                    <li>LSTM</li>
+                    
+                    <li>Transformers</li>
+                    
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section class="project-navigation">
+    <div class="container">
+        <a href="/" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Projects
+        </a>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2025 Jacob Gottesman. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="mailto:jacobgottesman1@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/jacobgottesman" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/jacob-gottesman-neu" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../static/js/main.js"></script>
+    
+</body>
+</html>

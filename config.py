@@ -9,6 +9,11 @@ FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT = 'content'
 FLATPAGES_MARKDOWN_EXTENSIONS = ['codehilite', 'tables', 'fenced_code', 'footnotes']
 
+# Frozen-Flask settings
+FREEZER_DESTINATION = 'build'
+FREEZER_RELATIVE_URLS = True
+FREEZER_REMOVE_EXTRA_FILES = True
+
 # Site settings
 SITE_TITLE = "Jacob Gottesman | Data Scientist"
 SITE_DESCRIPTION = "Portfolio of Jacob Gottesman, Data Scientist specializing in machine learning, NLP, and statistical modeling."

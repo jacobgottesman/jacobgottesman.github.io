@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Frisbee Analytics Player Rating System | Jacob Gottesman | Data Scientist</title>
+    <meta name="description" content="Portfolio of Jacob Gottesman, Data Scientist specializing in machine learning, NLP, and statistical modeling.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../static/css/main.css">
+    
+    
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">JG</a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="/" class="nav-link">Projects</a></li>
+                        <li><a href="/about/" class="nav-link">About</a></li>
+                        <li><a href="/resume/" class="nav-link">Resume</a></li>
+                        <li><a href="https://github.com/jacobgottesman" target="_blank" class="nav-link"><i class="fab fa-github"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/jacob-gottesman-neu" target="_blank" class="nav-link"><i class="fab fa-linkedin"></i></a></li>
+                    </ul>
+                    <button class="menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+<section class="project-header">
+    <div class="container">
+        <h1 class="project-header-title">Ultimate Frisbee Analytics Player Rating System</h1>
+        <div class="project-header-meta">
+            <div class="project-tags">
+                
+                <span class="tag">Machine Learning</span>
+                
+                <span class="tag">Sports Analytics</span>
+                
+                <span class="tag">Python</span>
+                
+                <span class="tag">Streamlit</span>
+                
+                <span class="tag">Statistical Modeling</span>
+                
+                <span class="tag">Mixed-Effects Models</span>
+                
+            </div>
+            <div class="project-links">
+                
+                <a href="https://ultimateanalyticsapp.streamlit.app/" target="_blank" class="btn btn-sm btn-primary">
+                    <i class="fas fa-external-link-alt"></i> View Demo
+                </a>
+                
+                
+                <a href="https://github.com/jacobgottesman/UltimateAnalyticsApp/tree/main" target="_blank" class="btn btn-sm btn-secondary">
+                    <i class="fab fa-github"></i> GitHub Repo
+                </a>
+                
+                
+                <a href="https://github.com/jacobgottesman/UltimateAnalyticsApp/blob/main/CMSAC%20Paper.pdf" target="_blank" class="btn btn-sm btn-outline">
+                    <i class="fas fa-file-alt"></i> Paper
+                </a>
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="project-content">
+    <div class="container">
+        <div class="project-content-wrapper">
+            
+            <div class="project-featured-image">
+                <img src="../../static/img/frisbee-project.jpg" alt="Ultimate Frisbee Analytics Player Rating System">
+            </div>
+            
+            
+            <div class="project-description">
+                <h2>Project Overview</h2>
+<p>The Ultimate Frisbee Analytics Player Rating System introduces two novel methodologies for evaluating player performance in the Ultimate Frisbee Association (UFA, formerly AUDL). Unlike traditional box score metrics, these approaches provide deeper insights into player contributions, addressing the complex team dynamics inherent to ultimate frisbee.</p>
+<h2>Motivation</h2>
+<p>While ultimate frisbee has grown substantially—now boasting 7 million players worldwide with governing bodies in 56 countries—the sport has lacked sophisticated analytical frameworks. This project fills that gap by developing rating systems that can:</p>
+<ul>
+<li>Help teams make more informed roster decisions</li>
+<li>Assist players in understanding their contributions beyond basic statistics</li>
+<li>Enhance fan experience through accessible and insightful metrics</li>
+<li>Identify undervalued talent across the league</li>
+</ul>
+<h2>Data Collection and Preparation</h2>
+<p>The project leverages multiple data sources from the UFA:</p>
+<ul>
+<li>Career player statistics dating back to 2012</li>
+<li>Detailed play-by-play data (available from 2021 onward)</li>
+<li>Positional information (available for approximately 28% of players)</li>
+</ul>
+<p>A key innovation was the development of a positional classifier to address the limited availability of position data, a crucial component for performance evaluation.</p>
+<h2>Methodology</h2>
+<h3>Position Classification</h3>
+<p>Given that only 28% of players had position data, I created a machine learning classifier to predict positions for the remaining players:</p>
+<ul>
+<li>Implemented and compared multiple classification algorithms (random forest, logistic regression)</li>
+<li>Achieved an 80% weighted F1 score using a random forest model with cross-validation</li>
+<li>Successfully classified players into three positions: handler, cutter, and defender</li>
+<li>Identified key statistical indicators that differentiate positions in ultimate frisbee</li>
+</ul>
+<h3>Player Rating Systems</h3>
+<p>The project developed two complementary rating systems:</p>
+<h4>1. Mixed-Effects Model</h4>
+<p>This statistical model evaluates how players perform relative to expectations by:</p>
+<ul>
+<li>Accounting for fixed effects (team, position, year, points played)</li>
+<li>Analyzing player performance as random effects</li>
+<li>Targeting four key metrics: goals, assists, blocks, and offensive efficiency</li>
+<li>Creating a composite rating that balances offensive and defensive contributions</li>
+</ul>
+<h4>2. On-Off Plus-Minus Model</h4>
+<p>Adapted from basketball analytics, this model measures a player's impact on team success by:</p>
+<ul>
+<li>Comparing team performance with the player on the field versus off</li>
+<li>Creating separate models for offensive and defensive impact</li>
+<li>Weighting these components to produce a comprehensive rating</li>
+<li>Quantifying a player's contribution beyond individual statistics</li>
+</ul>
+<h2>Key Findings</h2>
+<p>The analysis revealed several interesting insights:</p>
+<ul>
+<li>Both models successfully identified league-recognized top performers, with seven of the top eight players in the mixed-effects model having received UFA honors</li>
+<li>The models identified potentially undervalued players who had not received formal recognition</li>
+<li>Positional trends emerged, particularly in the on-off model which showed a strong preference for handlers</li>
+<li>The comparison between models showed only moderate correlation, suggesting they capture different aspects of player value</li>
+</ul>
+<h2>Interactive Web Application</h2>
+<p>The results are publicly accessible through a Streamlit web application, allowing users to:</p>
+<ul>
+<li>Explore player ratings and rankings across different positions and teams</li>
+<li>Compare players using multiple evaluation metrics</li>
+<li>Visualize performance trends across seasons</li>
+<li>Discover undervalued players who may be overlooked by traditional evaluation methods</li>
+</ul>
+<h2>Academic Recognition</h2>
+<p>This research contributes to the growing field of sports analytics with applications presented at the Carnegie Mellon Sports Analytics Conference (CMSAC).</p>
+<h2>Future Work</h2>
+<p>Future development directions include:</p>
+<ul>
+<li>Player combination analyses to understand lineup effectiveness</li>
+<li>More refined positional classification using clustering techniques</li>
+<li>Integration of additional tracking data as it becomes available</li>
+<li>Extension of these models to other ultimate frisbee leagues and competitions</li>
+</ul>
+<h2>Conclusion</h2>
+<p>This project demonstrates that established analytical frameworks from other sports can be effectively adapted for ultimate frisbee, creating new perspectives for player evaluation. The resulting metrics not only align with expert opinion in many cases but also challenge conventional wisdom, potentially revealing overlooked value and talent within the sport.</p>
+            </div>
+            
+            
+            <div class="project-technologies">
+                <h3>Technologies Used</h3>
+                <ul class="technologies-list">
+                    
+                    <li>Python</li>
+                    
+                    <li>Pandas</li>
+                    
+                    <li>Scikit-learn</li>
+                    
+                    <li>Streamlit</li>
+                    
+                    <li>NumPy</li>
+                    
+                    <li>StatsModels</li>
+                    
+                    <li>Random Forest Classification</li>
+                    
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section class="project-navigation">
+    <div class="container">
+        <a href="/" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Projects
+        </a>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2025 Jacob Gottesman. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="mailto:jacobgottesman1@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/jacobgottesman" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/jacob-gottesman-neu" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../static/js/main.js"></script>
+    
+</body>
+</html>

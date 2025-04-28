@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartWatch Exercise Detection System | Jacob Gottesman | Data Scientist</title>
+    <meta name="description" content="Portfolio of Jacob Gottesman, Data Scientist specializing in machine learning, NLP, and statistical modeling.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../static/css/main.css">
+    
+    
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">JG</a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="/" class="nav-link">Projects</a></li>
+                        <li><a href="/about/" class="nav-link">About</a></li>
+                        <li><a href="/resume/" class="nav-link">Resume</a></li>
+                        <li><a href="https://github.com/jacobgottesman" target="_blank" class="nav-link"><i class="fab fa-github"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/jacob-gottesman-neu" target="_blank" class="nav-link"><i class="fab fa-linkedin"></i></a></li>
+                    </ul>
+                    <button class="menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+<section class="project-header">
+    <div class="container">
+        <h1 class="project-header-title">SmartWatch Exercise Detection System</h1>
+        <div class="project-header-meta">
+            <div class="project-tags">
+                
+                <span class="tag">Machine Learning</span>
+                
+                <span class="tag">CNN</span>
+                
+                <span class="tag">Time Series Analysis</span>
+                
+                <span class="tag">iOS Development</span>
+                
+                <span class="tag">Exercise Recognition</span>
+                
+            </div>
+            <div class="project-links">
+                
+                
+                <a href="https://github.com/Djai284/smartwatch-activity-recognition/tree/main" target="_blank" class="btn btn-sm btn-secondary">
+                    <i class="fab fa-github"></i> GitHub Repo
+                </a>
+                
+                
+                
+                <a href="https://drive.google.com/file/d/19hBm5GYtoViwDAvYYyQ3rD5lTdQpqv6O/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline">
+                    <i class="fas fa-video"></i> Video
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="project-content">
+    <div class="container">
+        <div class="project-content-wrapper">
+            
+            <div class="project-featured-image">
+                <img src="../../static/img/cnn-exercise.jpg" alt="SmartWatch Exercise Detection System">
+            </div>
+            
+            
+            <div class="project-description">
+                <h2>Project Overview</h2>
+<p>The SmartWatch Exercise Detection System is an innovative solution that uses machine learning to automatically detect and log exercises based on wrist-worn sensor data. Unlike traditional fitness apps that require manual logging, our system recognizes movements in real-time, providing seamless workout tracking without interrupting the exercise flow.</p>
+<h2>Motivation</h2>
+<p>Current fitness tracking solutions have significant limitations:
+- They require manual input of exercise names and repetitions
+- Users need to pause workouts to log their activity
+- Apps often have overwhelming interfaces with thousands of exercise options
+- Manual tracking leads to inconsistent logging and disrupted workout flow</p>
+<p>Our system addresses these pain points by leveraging the sensors already present in smartwatches to automatically detect exercises as they happen, enabling effortless and accurate workout tracking.</p>
+<h2>Data Collection</h2>
+<p>We utilized three large-scale datasets containing over 4,000 minutes of exercise data with varying:
+- Exercise types (32 different exercise classes)
+- Participants (ensuring diversity in movement patterns)
+- Sensor sampling frequencies (to accommodate different devices)</p>
+<p>Each dataset included synchronized measurements from:
+- 3-axis accelerometer (measuring linear acceleration)
+- 3-axis gyroscope (measuring rotational movement)</p>
+<h2>Data Processing</h2>
+<p>Our data processing pipeline involved several key steps:
+- Consolidating exercise names across multiple datasets
+- Normalizing sampling frequencies to ensure consistent input
+- Careful participant-based train/test splitting to prevent data leakage
+- Implementing a windowing approach with overlapping segments to:
+  - Account for variations in exercise speed between individuals
+  - Increase the number of training samples
+  - Create more robust feature recognition</p>
+<h2>Model Architecture</h2>
+<p>After extensive experimentation, our final CNN architecture included:
+- Multiple convolutional layers with small kernel sizes to capture complex movement patterns
+- Dropout layers to prevent overfitting
+- Balanced focal loss to address class imbalance issues
+- One-dimensional convolutions across time for each sensor dimension</p>
+<p>Key findings from our architecture exploration:
+- More convolutional layers with smaller kernel sizes outperformed fewer layers with larger kernels
+- Surprisingly, fewer fully connected layers improved performance by avoiding overfitting
+- A balanced loss function significantly improved F1-macro scores across all classes</p>
+<h2>Model Evaluation</h2>
+<p>Our final model achieved:
+- 91% overall accuracy across 32 exercise classes
+- Similar F1-macro and accuracy scores, indicating good performance across all classes
+- 100% recall for some exercises like planks (though with lower precision)
+- Lower performance on exercises with high variability like tricep extensions</p>
+<p>Analysis of the model's embeddings revealed interesting patterns:
+- Exercises with standardized hand positions (like deadlifts) had tightly clustered embeddings
+- Exercises with variable hand positions (like squats) had more dispersed embeddings</p>
+<h2>Validation &amp; Deployment</h2>
+<p>We conducted rigorous validation through multiple approaches:
+- Cross-dataset validation (training on two datasets, testing on the third)
+- Development of an iOS application for real-time testing
+- Transfer learning to adapt the model to iPhone-specific sensor characteristics</p>
+<p>Our real-time iOS prototype demonstrated:
+- Successful integration with the iPhone's Neural Engine for real-time inference
+- 95% accuracy after fine-tuning with minimal device-specific data (just 20 repetitions per exercise)
+- Potential for real-time rep counting based on movement pattern recognition</p>
+<h2>Future Work</h2>
+<p>We're continuing to develop this system with several exciting directions:
+- Expansion to smartwatch platforms beyond iPhone
+- Implementation of repetition counting functionality
+- Creation of a crowdsourced data collection system to improve model robustness
+- Addition of heart rate data to better distinguish between similar movement patterns
+- Further refinement of exercise classifications to improve accuracy for similar movements</p>
+<h2>Conclusion</h2>
+<p>This project demonstrates the potential for machine learning to transform fitness tracking by eliminating manual logging requirements. With just wrist-worn sensors, we can accurately identify a wide range of exercises in real-time, creating a more seamless and effective workout experience. Our system not only improves the user experience but also enables more consistent and accurate exercise logging for better fitness outcomes.</p>
+            </div>
+            
+            
+            <div class="project-technologies">
+                <h3>Technologies Used</h3>
+                <ul class="technologies-list">
+                    
+                    <li>Python</li>
+                    
+                    <li>TensorFlow</li>
+                    
+                    <li>Core ML</li>
+                    
+                    <li>iOS</li>
+                    
+                    <li>Accelerometer</li>
+                    
+                    <li>Gyroscope</li>
+                    
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section class="project-navigation">
+    <div class="container">
+        <a href="/" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Projects
+        </a>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2025 Jacob Gottesman. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="mailto:jacobgottesman1@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/jacobgottesman" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/jacob-gottesman-neu" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../static/js/main.js"></script>
+    
+</body>
+</html>

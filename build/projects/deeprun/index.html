@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepRun - AI-Generated Running Routes | Jacob Gottesman | Data Scientist</title>
+    <meta name="description" content="Portfolio of Jacob Gottesman, Data Scientist specializing in machine learning, NLP, and statistical modeling.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../static/css/main.css">
+    
+    
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">JG</a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="/" class="nav-link">Projects</a></li>
+                        <li><a href="/about/" class="nav-link">About</a></li>
+                        <li><a href="/resume/" class="nav-link">Resume</a></li>
+                        <li><a href="https://github.com/jacobgottesman" target="_blank" class="nav-link"><i class="fab fa-github"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/jacob-gottesman-neu" target="_blank" class="nav-link"><i class="fab fa-linkedin"></i></a></li>
+                    </ul>
+                    <button class="menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+<section class="project-header">
+    <div class="container">
+        <h1 class="project-header-title">DeepRun - AI-Generated Running Routes</h1>
+        <div class="project-header-meta">
+            <div class="project-tags">
+                
+                <span class="tag">Deep Learning</span>
+                
+                <span class="tag">LSTM</span>
+                
+                <span class="tag">Spatial AI</span>
+                
+                <span class="tag">Computer Vision</span>
+                
+                <span class="tag">Route Generation</span>
+                
+            </div>
+            <div class="project-links">
+                
+                
+                <a href="https://github.com/jacobgottesman/4400_final_project" target="_blank" class="btn btn-sm btn-secondary">
+                    <i class="fab fa-github"></i> GitHub Repo
+                </a>
+                
+                
+                
+                <a href="https://drive.google.com/file/d/1r25IdGHqP75ZB6QcTgrhWk9OgNdkzOiZ/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline">
+                    <i class="fas fa-video"></i> Video
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="project-content">
+    <div class="container">
+        <div class="project-content-wrapper">
+            
+            <div class="project-featured-image">
+                <img src="../../static/img/deeprun.jpg" alt="DeepRun - AI-Generated Running Routes">
+            </div>
+            
+            
+            <div class="project-description">
+                <h2>Project Overview</h2>
+<p>DeepRun is an innovative AI system that generates personalized running routes based on user location and preferences. Using deep learning techniques and spatial analysis, the system creates natural running paths that respect geographic constraints while providing novel routes for users seeking variety in their exercise routines.</p>
+<h2>Motivation</h2>
+<p>Have you ever wanted to go for a run but found yourself tired of the same old routes? Or perhaps you've seen interesting routes that others take but they're too far from your location? DeepRun addresses this problem by creating customized running routes based on your starting location and preferences, offering fresh paths for runners, walkers, and cyclists looking to explore their surroundings.</p>
+<h2>Data Collection &amp; Processing</h2>
+<p>The project uses a dataset from Endomondo (formerly owned by Under Armour) containing approximately:
+- 250,000+ workout sessions
+- 70,000 running routes after filtering
+- Geographic coordinate sequences
+- Map imagery and terrain data</p>
+<p>A significant challenge was converting coordinate data to map visualization. We developed a custom process that:
+1. Retrieved map tiles using Folium and OpenStreetMap
+2. Placed reference markers at map corners
+3. Captured screenshots with a headless browser
+4. Used the reference points to interpolate correct route positions on maps
+5. Generated consistent training examples of coordinate sequences with corresponding map imagery</p>
+<h2>Model Evolution</h2>
+<h3>Initial Approach: Conditional GAN</h3>
+<p>Our first attempt used a Conditional Generative Adversarial Network with:
+- Conditional parameters for route distance and intensity
+- 500 latitude/longitude points converted to xy coordinates
+- A generator-discriminator architecture with multiple output heads</p>
+<p>This approach struggled due to the high-resolution image inputs and complex spatial relationships, resulting in unrealistic routes clustered in corners of the map.</p>
+<h3>Transformer Model</h3>
+<p>We pivoted to a transformer-based approach, recognizing that routes are sequential data:
+- 2D spatial attention mechanisms to understand map features
+- Conditional embeddings for route requirements
+- Combined map input with condition parameters</p>
+<p>This improved results but still produced jittery paths with abrupt jumps and illogical patterns (like running in circles or through water bodies).</p>
+<h3>LSTM Solution</h3>
+<p>Our breakthrough came with an LSTM-based architecture:
+- Sequential coordinate prediction
+- Map feature extraction using a CNN on 128x128 pixel crops around current position
+- Separate embedding networks for coordinates and condition features
+- Feature fusion through deep networks</p>
+<p>The LSTM approach finally produced realistic-looking routes but required further refinement through a custom loss function to address specific issues.</p>
+<h2>Custom Loss Function</h2>
+<p>To generate truly useful routes, we implemented several specialized loss components:
+1. <strong>Endpoint Penalty</strong> - Ensures routes end at the desired destination
+2. <strong>Blue Area Penalty</strong> - Prevents routes from crossing water bodies by analyzing map colors
+3. <strong>Step Size Consistency</strong> - Maintains a realistic and consistent pace
+4. <strong>Color Change Penalty</strong> - Encourages staying on similar terrain (like roads)</p>
+<p>These constraints successfully guided the model to produce routes that follow logical paths while meeting user requirements.</p>
+<h2>Post-Processing</h2>
+<p>The raw routes still required refinement, so we implemented post-processing techniques:
+- Mapping route points to the nearest road network nodes
+- Snapping coordinates to valid paths using OpenStreetMap graph data
+- Smoothing and optimizing the final route</p>
+<p>This resulted in routes that are actually followable and respect real-world constraints.</p>
+<h2>Results &amp; Example</h2>
+<p>We tested our system on familiar territory, generating a route from a classroom to a nearby park. While not perfect, the system successfully created a reasonable running route that:
+- Started and ended at the specified points
+- Generally followed roads and paths
+- Avoided obstacles like buildings and water
+- Created a path suitable for exercise rather than simple transportation</p>
+<h2>Challenges &amp; Limitations</h2>
+<p>The project faced significant technical challenges:
+- Handling complex, high-resolution map data
+- Computational resource constraints for training
+- Difficulty in keeping routes on roads without explicit road network data
+- Balancing route quality with training efficiency</p>
+<h2>Future Work</h2>
+<p>We're excited about several directions for future development:
+- Implementing graph neural networks for better road network adherence
+- Improving training with more computational resources
+- Expanding to support walking, biking, and hiking routes with terrain-specific considerations
+- Incorporating elevation data and user fitness levels
+- Adding support for loop routes that return to the starting point</p>
+<h2>Technical Significance</h2>
+<p>This project demonstrates the potential of deep learning for complex spatial and sequential generation tasks. By combining computer vision, sequence modeling, and geographic constraints, DeepRun showcases how AI can be applied to create personalized, practical solutions for everyday activities.</p>
+            </div>
+            
+            
+            <div class="project-technologies">
+                <h3>Technologies Used</h3>
+                <ul class="technologies-list">
+                    
+                    <li>Python</li>
+                    
+                    <li>TensorFlow</li>
+                    
+                    <li>Folium</li>
+                    
+                    <li>OpenStreetMap</li>
+                    
+                    <li>CNN</li>
+                    
+                    <li>LSTM</li>
+                    
+                    <li>Sequence Modeling</li>
+                    
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section class="project-navigation">
+    <div class="container">
+        <a href="/" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Projects
+        </a>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2025 Jacob Gottesman. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="mailto:jacobgottesman1@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/jacobgottesman" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/jacob-gottesman-neu" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../static/js/main.js"></script>
+    
+</body>
+</html>
