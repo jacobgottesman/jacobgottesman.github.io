@@ -25,8 +25,12 @@ jobs:
       - name: Build static site
         run: python freeze.py
       
+      - name: Create .nojekyll file
+        run: touch build/.nojekyll
+      
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build
           branch: gh-pages
+          clean: true
