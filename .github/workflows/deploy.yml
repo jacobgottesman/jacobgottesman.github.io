@@ -26,7 +26,15 @@ jobs:
         run: python freeze.py
       
       - name: Create .nojekyll file
-        run: touch build/.nojekyll
+        run: |
+          touch build/.nojekyll
+          # Create a root .nojekyll file that will be committed and used for future builds
+          touch .nojekyll
+      
+      - name: Debug build directory
+        run: |
+          echo "Contents of build directory:"
+          ls -la build/
       
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
@@ -34,3 +42,5 @@ jobs:
           folder: build
           branch: gh-pages
           clean: true
+          # Make sure .nojekyll gets properly deployed
+          nojekyll: true
